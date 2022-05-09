@@ -24,5 +24,5 @@ if git merge --no-edit -m "Merge branch '$SOURCE_BRANCH' into $DESTINATION_BRANC
 fi;
 
 echo "Merge failed!"
-# TODO add slack integration
+curl -d "text=:x: Unable to merge branch '$SOURCE_BRANCH' into '$DESTINATION_BRANCH', please attempt manually" -d "channel=$SLACK_CHANNEL_ID" -d "token=$SLACK_API_TOKEN" -X POST https://slack.com/api/chat.postMessage
 exit 1
